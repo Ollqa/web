@@ -11,7 +11,8 @@ export const initialState = {
     firstName: '',
     lastName: ''
   },
-  errors: {}
+  errors: {},
+  formFields: {firstName: '',lastName: ''}
 };
 
 const reducer = createReducer(initialState, {
@@ -19,12 +20,12 @@ const reducer = createReducer(initialState, {
   [actions.clear]: () => initialState,
   [actions.clearProfile]: state => ({
     ...state,
-    profile: initialState.profile
+    formFields: initialState.formFields
   }),
   [logout]: () => initialState,
   [actions.changeProfile]: (state, { field, value }) => ({
     ...state,
-    profile: { ...state.profile, [field]: value },
+    formFields: { ...state.formFields, [field]: value },
     errors: {
       ...state.errors,
       [field]: ''

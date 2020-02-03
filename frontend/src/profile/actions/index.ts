@@ -8,6 +8,10 @@ export const changeProfile = (field, value) => ({
   value
 });
 
+export const clearProfile = () => ({
+  type: actions.clearProfile
+});
+
 export const setErrors = errors => ({
   type: actions.setErrors,
   errors
@@ -15,7 +19,7 @@ export const setErrors = errors => ({
 
 export const save = () => async (dispatch, getState, client) => {
   const {
-    profile: { firstName, lastName },
+    formFields: { firstName, lastName },
     id
   } = getState().me;
 
@@ -59,9 +63,7 @@ export const save = () => async (dispatch, getState, client) => {
       dispatch(push('/'));
     }
   } catch (e) {
-    dispatch({
-      type: actions.clearProfile
-    });
+    dispatch(clearProfile());
   }
 };
 

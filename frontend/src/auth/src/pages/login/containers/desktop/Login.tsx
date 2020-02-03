@@ -13,7 +13,6 @@ const propsSelector = (state: any) => ({
 const LoginContainer: React.FC<any> = (): JSX.Element => {
   const dispatch = useDispatch();
   const { pathname, ...restProps } = useSelector(propsSelector);
-  console.log(pathname);
 
   React.useEffect(() => {
     return () => {
